@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
 import java.time.Instant;
 import java.time.LocalDate;
 
@@ -24,6 +23,12 @@ public class Customer extends AbstractUser {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "lastname")
+    private String lastname;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_of_birth")
