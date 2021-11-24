@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.pabjan.bankmanagementsystem.exceptions.BankCustomerException;
 import pl.pabjan.bankmanagementsystem.mapper.CustomerMapper;
+import pl.pabjan.bankmanagementsystem.mapper.dto.CustomerRequest;
 import pl.pabjan.bankmanagementsystem.mapper.dto.CustomerResponse;
+import pl.pabjan.bankmanagementsystem.model.Customer;
 import pl.pabjan.bankmanagementsystem.repo.CustomerRepo;
 
 import java.util.List;
@@ -28,4 +30,17 @@ public class CustomerService {
     public List<CustomerResponse> findByLastName(String lastname) {
         return customerRepo.findByLastname(lastname).stream().map(customerMapper::mapToDto).collect(Collectors.toList());
     }
+
+//    saving customer account in database
+    public void save(CustomerRequest customerRequest) {
+        Customer customer = customerMapper.map(customerRequest);
+        enableAccount(customer);
+        customerRepo.save(customer);
+    }
+
+//    setting account to enabled
+    private void enableAccount(Customer customer) {
+        customer.setEnabled(true);
+    }
+
 }

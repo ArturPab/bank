@@ -30,7 +30,6 @@ public class Customer extends AbstractModel {
     @Column(name = "lastname")
     private String lastname;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
