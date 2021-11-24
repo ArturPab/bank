@@ -25,7 +25,7 @@ public class CustomerService {
         return customerRepo.findAll().stream().map(customerMapper::mapToDto).collect(Collectors.toList());
     }
 
-    public CustomerResponse findByLastName(String lastname) {
-        return customerMapper.mapToDto(customerRepo.findByLastname(lastname).orElseThrow(() -> new BankCustomerException("Customer not found")));
+    public List<CustomerResponse> findByLastName(String lastname) {
+        return customerRepo.findByLastname(lastname).stream().map(customerMapper::mapToDto).collect(Collectors.toList());
     }
 }

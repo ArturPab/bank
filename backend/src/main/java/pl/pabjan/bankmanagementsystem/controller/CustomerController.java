@@ -32,7 +32,7 @@ public class CustomerController {
     }
 
     @GetMapping("/lastname/{lastname}")
-    public ResponseEntity<CustomerResponse> findByLastname(@PathVariable String lastname) {
+    public ResponseEntity<List<CustomerResponse>> findByLastname(@PathVariable String lastname) {
         return status(HttpStatus.OK).body(customerService.findByLastName(lastname));
     }
 }

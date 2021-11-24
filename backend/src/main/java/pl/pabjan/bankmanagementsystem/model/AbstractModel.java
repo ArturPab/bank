@@ -8,7 +8,7 @@ import javax.persistence.*;
 /* Superclass that will not generate a table */
 @MappedSuperclass
 @Getter
-public abstract class AbstractUser {
+public abstract class AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +33,7 @@ public abstract class AbstractUser {
         if(getClass()!=obj.getClass()) {
             return false;
         }
-        AbstractUser other = (AbstractUser) obj;
+        AbstractModel other = (AbstractModel) obj;
         if(getId()==null || other.getId() == null) {
             return false;
         }
