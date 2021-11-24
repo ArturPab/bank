@@ -17,7 +17,7 @@ class CustomerMapperTest {
 
         CustomerRequest customerRequest = new CustomerRequest();
         customerRequest.setEmail("test@test.com");
-        customerRequest.setLastName("test");
+        customerRequest.setLastname("test");
         customerRequest.setName("test");
         customerRequest.setDateOfBirth(LocalDate.parse("1999-01-01"));
 //        given

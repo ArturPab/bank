@@ -27,7 +27,8 @@ public class CustomerMapper {
         Customer customer = new Customer();
         customer.setEmail(customerRequest.getEmail());
         customer.setName(customerRequest.getName());
-        customer.setLastname(customerRequest.getLastName());
+        customer.setLastname(customerRequest.getLastname());
+        customer.setPassword(customerRequest.getPassword());
         customer.setDateOfBirth(customerRequest.getDateOfBirth());
         customer.setBankAccountNumber(generateAccountNumber());
         customer.setEnabled(false);

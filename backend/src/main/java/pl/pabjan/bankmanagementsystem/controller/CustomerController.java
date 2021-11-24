@@ -24,9 +24,9 @@ public class CustomerController {
         return status(HttpStatus.OK).body(customerService.findById(id));
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<CustomerResponse>> findAll() {
-        return status(HttpStatus.OK).body(customerService.findAll());
+    @GetMapping("/all-with-card")
+    public ResponseEntity<List<CustomerResponse>> findAllWithCard() {
+        return status(HttpStatus.OK).body(customerService.findAllWithCard());
     }
 
     @GetMapping("/lastname/{lastname}")

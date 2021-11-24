@@ -2,7 +2,6 @@ package pl.pabjan.bankmanagementsystem.mapper.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -19,7 +18,7 @@ public class CustomerRequest {
     private String name;
 
     @Size(min = 2, max = 80)
-    private String lastName;
+    private String lastname;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
