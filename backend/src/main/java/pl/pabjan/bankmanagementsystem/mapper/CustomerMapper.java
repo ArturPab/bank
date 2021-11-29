@@ -1,8 +1,8 @@
 package pl.pabjan.bankmanagementsystem.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.pabjan.bankmanagementsystem.mapper.dto.CustomerRequest;
-import pl.pabjan.bankmanagementsystem.mapper.dto.CustomerResponse;
+import pl.pabjan.bankmanagementsystem.model.dto.CustomerRequest;
+import pl.pabjan.bankmanagementsystem.model.dto.CustomerResponse;
 import pl.pabjan.bankmanagementsystem.model.Customer;
 
 import java.time.Instant;
@@ -33,6 +33,7 @@ public class CustomerMapper {
         customer.setBankAccountNumber(generateAccountNumber());
         customer.setEnabled(false);
         customer.setCreated(Instant.now());
+        customer.setRole("USER");
 
         return customer;
     }

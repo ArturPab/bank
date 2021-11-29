@@ -1,18 +1,20 @@
 package pl.pabjan.bankmanagementsystem.model;
 
 
-import lombok.Getter;
+import lombok.Data;
 
 import javax.persistence.*;
 
 /* Superclass that will not generate a table */
 @MappedSuperclass
-@Getter
+@Data
 public abstract class AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String role;
 
     @Override
     public int hashCode() {

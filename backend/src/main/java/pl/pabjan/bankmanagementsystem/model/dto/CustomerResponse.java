@@ -1,4 +1,4 @@
-package pl.pabjan.bankmanagementsystem.mapper.dto;
+package pl.pabjan.bankmanagementsystem.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

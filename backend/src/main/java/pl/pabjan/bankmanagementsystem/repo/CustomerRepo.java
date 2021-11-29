@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import pl.pabjan.bankmanagementsystem.model.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Long> {
@@ -13,4 +14,6 @@ public interface CustomerRepo extends JpaRepository<Customer, Long> {
     List<Customer> findAllWithCard();
 
     List<Customer> findByLastname(String lastname);
+
+    Optional<Customer> findByEmail(String email);
 }

@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.pabjan.bankmanagementsystem.mapper.dto.CustomerRequest;
-import pl.pabjan.bankmanagementsystem.mapper.dto.CustomerResponse;
+import pl.pabjan.bankmanagementsystem.model.dto.CustomerRequest;
+import pl.pabjan.bankmanagementsystem.model.dto.CustomerResponse;
 import pl.pabjan.bankmanagementsystem.service.CustomerService;
 
 import java.util.List;
