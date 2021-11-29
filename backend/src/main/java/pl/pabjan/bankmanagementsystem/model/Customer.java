@@ -43,6 +43,9 @@ public class Customer extends AbstractModel {
     @Column(name = "enabled")
     private boolean enabled;
 
+    @Column(name = "role")
+    private String role;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bank_card_id", referencedColumnName = "id")
     private BankCard bankCard;

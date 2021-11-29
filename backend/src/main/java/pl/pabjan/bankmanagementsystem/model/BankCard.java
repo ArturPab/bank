@@ -10,16 +10,13 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "bank_card")
-public class BankCard {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class BankCard extends AbstractModel {
 
     @Size(min = 16, max = 16)
     @Column(name = "card_number")
