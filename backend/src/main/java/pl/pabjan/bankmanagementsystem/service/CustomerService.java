@@ -1,8 +1,13 @@
 package pl.pabjan.bankmanagementsystem.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.pabjan.bankmanagementsystem.exceptions.BankCustomerException;
 import pl.pabjan.bankmanagementsystem.mapper.CustomerMapper;
 import pl.pabjan.bankmanagementsystem.model.dto.CustomerRequest;
@@ -21,8 +26,19 @@ public class CustomerService {
     private final CustomerMapper customerMapper;
     private final PasswordEncoder passwordEncoder;
 
+//    returns data about current customer
     public CustomerResponse findById(Long id) {
-        return customerMapper.mapToDto(customerRepo.findById(id).orElseThrow(() -> new BankCustomerException("Customer not found")));
+        Customer currentCustomer = getCurrentCustomer();
+        Customer customer = customerRepo.findById(id).orElseThrow(() -> new BankCustomerException("Customer not found"));
+        if(customer.getEmail().equals(currentCustomer.getEmail()))
+            return customerMapper.mapToDto(customer);
+        throw new BankCustomerException("Unauthorized!");
+    }
+
+    @Transactional(readOnly = true)
+    public Customer getCurrentCustomer() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return customerRepo.findByEmail(email).orElseThrow(() -> new BankCustomerException("Customer not found"));
     }
 
     public List<CustomerResponse> findAllWithCard() {
