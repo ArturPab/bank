@@ -33,6 +33,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         this.tokenExpirationTime = tokenExpirationTime;
     }
 
+//    checking if login request is proper
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
@@ -47,6 +48,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         }
     }
 
+//        returns json body from request
     private StringBuilder getReqBody(HttpServletRequest request) throws IOException {
         BufferedReader reader = request.getReader();
         StringBuilder sb = new StringBuilder();
@@ -57,6 +59,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         return sb;
     }
 
+//    sets header authorization as token
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) {
         User user = (User) authResult.getPrincipal();
@@ -69,6 +72,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         super.unsuccessfulAuthentication(request, response, failed);
     }
 
+//    returns token
     private String getJWTToken(User user, HttpServletRequest request) {
         Algorithm algorithm = Algorithm.HMAC256(secret.getBytes());
         return JWT.create()

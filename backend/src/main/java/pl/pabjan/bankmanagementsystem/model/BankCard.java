@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class BankCard extends AbstractModel {
 
     @Size(min = 16, max = 16)
-    @Column(name = "card_number")
+    @Column(name = "card_number", unique = true)
     private String cardNumber;
 
     @Size(min = 3, max = 3)

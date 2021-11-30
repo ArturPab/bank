@@ -37,7 +37,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         chain.doFilter(request, response);
     }
-
+//    authenticates a user
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(TOKEN_HEADER);
         if (token!=null && token.startsWith(TOKEN_PREFIX)) {
@@ -49,7 +49,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         }
         return null;
     }
-
+//    returns email from token
     private String getEncodedEmail(String token) {
         return JWT.require(Algorithm.HMAC256(secret))
                 .build()
