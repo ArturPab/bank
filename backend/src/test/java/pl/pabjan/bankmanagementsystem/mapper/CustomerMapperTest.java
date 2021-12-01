@@ -20,6 +20,7 @@ class CustomerMapperTest {
         customerRequest.setLastname("test");
         customerRequest.setName("test");
         customerRequest.setDateOfBirth(LocalDate.parse("1999-01-01"));
+        customerRequest.setPassword("test");
 //        given
         Customer customer = customerMapper.map(customerRequest);
 //        then
@@ -27,4 +28,5 @@ class CustomerMapperTest {
         System.out.println(customer.getBankAccountNumber());
         assertEquals(26, customer.getBankAccountNumber().length());
     }
+
 }

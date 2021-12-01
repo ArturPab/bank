@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -32,6 +33,10 @@ public class BankCard extends AbstractModel {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @Pattern(regexp = "^[0-9]{4}$", message = "must be 4 numbers")
+    @Column(name = "pin")
+    private String pin;
 
     @OneToOne(mappedBy = "bankCard")
     private Customer customer;
