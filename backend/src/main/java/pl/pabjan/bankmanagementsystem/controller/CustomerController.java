@@ -24,6 +24,11 @@ public class CustomerController {
         return status(HttpStatus.OK).body(customerService.findById(id));
     }
 
+    @GetMapping
+    public ResponseEntity<CustomerResponse> findByCurrentCustomer() {
+        return status(HttpStatus.OK).body(customerService.findByCurrentCustomer());
+    }
+
     @GetMapping("/all-with-card")
     public ResponseEntity<List<CustomerResponse>> findAllWithCard() {
         return status(HttpStatus.OK).body(customerService.findAllWithCard());

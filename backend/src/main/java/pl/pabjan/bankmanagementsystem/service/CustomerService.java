@@ -59,4 +59,8 @@ public class CustomerService {
         customer.setEnabled(true);
     }
 
+    public CustomerResponse findByCurrentCustomer() {
+        Customer currentCustomer = getCurrentCustomer();
+        return customerMapper.mapToDto(currentCustomer);
+    }
 }

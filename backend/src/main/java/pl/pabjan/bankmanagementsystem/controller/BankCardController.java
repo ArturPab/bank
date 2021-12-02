@@ -18,7 +18,7 @@ public class BankCardController {
     private final BankCardService bankCardService;
 
     @GetMapping("/by-current-customer")
-    public ResponseEntity<BankCardResponse> findById() {
+    public ResponseEntity<BankCardResponse> findByCurrentCustomer() {
         return status(HttpStatus.OK).body(bankCardService.findByCurrentCustomer());
     }
 
