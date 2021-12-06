@@ -2,7 +2,7 @@
   background-image: url("../../../../assets/login-bg.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .login-form {

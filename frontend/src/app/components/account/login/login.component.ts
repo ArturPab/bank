@@ -20,7 +20,11 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    if(this.accountService.userValue) {
+      this.router.navigate([''])
+    }
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
