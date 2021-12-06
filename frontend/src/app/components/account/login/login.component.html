@@ -1,0 +1,47 @@
+<div class="row justify-content-center form-wrapper align-items-center">
+  <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+    <form
+      class="login-form row justify-content-center"
+      [formGroup]="form"
+      (ngSubmit)="onLogin()"
+    >
+      <div class="img-wrapper col-12 text-center">
+        <img src="../../../../assets/login-picture.jpg" alt="" />
+      </div>
+      <div class="col-12 form-group">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Enter your email"
+          formControlName="email"
+          maxlength="42"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+        />
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Email is required</div>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <input
+          class="form-control"
+          type="password"
+          placeholder="Enter your password"
+          formControlName="password"
+          maxlength="70"
+          [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+        />
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">
+            Password is required
+          </div>
+        </div>
+      </div>
+      <input
+        [disabled]="loading"
+        type="submit"
+        value="Log in"
+        class="btn btn-block btn-primary mt-2 py-3"
+      />
+    </form>
+  </div>
+</div>
