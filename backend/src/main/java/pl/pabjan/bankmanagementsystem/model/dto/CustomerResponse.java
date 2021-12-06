@@ -23,7 +23,8 @@ public class CustomerResponse {
 
     private String bankAccountNumber;
 
+    private Instant created;
+
     private boolean enabled;
 
-    private String token;
 }

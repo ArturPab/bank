@@ -61,10 +61,10 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 //    sets header authorization as token
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) {
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException {
         User user = (User) authResult.getPrincipal();
         String token = getJWTToken(user, request);
-        response.setHeader("Authorization", "Bearer " + token);
+        response.getOutputStream().print("{\"email\": \"" + user.getUsername() + "\"," + "\"token\": \"" + token + "\"}");
     }
 
     @Override
