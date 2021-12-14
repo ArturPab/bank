@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    if(this.accountService.userValue) {
-      this.router.navigate([''])
+    if (this.accountService.userValue) {
+      this.router.navigate(['']);
     }
   }
 
@@ -43,9 +43,6 @@ export class LoginComponent implements OnInit {
 
     // if is invalid - stop
     if (this.form.invalid) {
-      console.log(this.submitted);
-      console.log(this.f['email'].errors);
-
       return;
     }
 
