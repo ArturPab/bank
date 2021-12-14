@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
+import { RegisterRequest } from '../models/register-request';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -31,6 +32,16 @@ export class AccountService {
     return this.userSubject.value;
   }
 
+  register(registerRequest: RegisterRequest) {
+    return this.http
+      .post<RegisterRequest>(
+        `${environment.apiUrl}/api/customer/register`,
+        JSON.stringify(registerRequest),
+        httpOptions
+      )
+      .pipe();
+  }
+
   login(email: string, password: string) {
     return this.http
       .post<User>(
@@ -50,6 +61,6 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 }

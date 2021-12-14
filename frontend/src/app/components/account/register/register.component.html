@@ -1,0 +1,110 @@
+<div class="row justify-content-center form-wrapper align-items-center">
+  <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+    <form
+      class="register-form row justify-content-center"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="col-12 text-center text-wrapper">
+        <h2>Registration</h2>
+      </div>
+      <div class="col-12 form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name"
+          formControlName="name"
+          minlength="2"
+          maxlength="30"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        />
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+          <div *ngIf="f['name'].errors['required']">Name is required</div>
+          <div *ngIf="f['name'].errors['minlength']">
+            Min length of name is 2!
+          </div>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Lastname"
+          formControlName="lastname"
+          minlength="2"
+          maxlength="30"
+          [ngClass]="{ 'is-invalid': submitted && f['lastname'].errors }"
+        />
+        <div *ngIf="submitted && f['lastname'].errors" class="invalid-feedback">
+          <div *ngIf="f['lastname'].errors['required']">
+            Lastname is required
+          </div>
+          <div *ngIf="f['lastname'].errors['minlength']">
+            Min length of lastname is 2!
+          </div>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          maxlength="42"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+        />
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors['required']">Email is required</div>
+          <div *ngIf="f['email'].errors['email']">Wrong type of email</div>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <input
+          class="form-control"
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          maxlength="70"
+          [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+        />
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+          <div *ngIf="f['password'].errors['required']">
+            Password is required
+          </div>
+          <div *ngIf="f['password'].errors['minlength']">
+            Min length of password is 6!
+          </div>
+        </div>
+      </div>
+      <div class="col-12 row justify-content-between">
+        <div class="form-group col-lg-3 p-0">
+          <select class="form-select form-control" formControlName="day">
+            <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+          </select>
+        </div>
+        <div class="form-group col-lg-5 p-0">
+          <select class="form-select form-control" formControlName="month">
+            <option *ngFor="let month of months" [value]="month">
+              {{ month }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-lg-3 p-0">
+          <select class="form-select form-control" formControlName="year">
+            <option *ngFor="let year of years" [value]="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12 p-0">
+        <input
+          [disabled]="loading"
+          type="submit"
+          value="Register"
+          class="btn btn-block btn-primary form-control col-12 w-100"
+        />
+      </div>
+    </form>
+  </div>
+</div>
