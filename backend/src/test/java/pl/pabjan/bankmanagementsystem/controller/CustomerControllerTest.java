@@ -1,6 +1,5 @@
 package pl.pabjan.bankmanagementsystem.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 import pl.pabjan.bankmanagementsystem.model.dto.CustomerResponse;
@@ -33,7 +31,7 @@ class CustomerControllerTest {
     @Test
     @Transactional
     void saveCustomerTest() throws Exception {
-//        given
+//        when
         mockMvc.perform(post("/api/customer/register")
                 .content("{\"email\": \"testmvc@test.com\", \"password\": \"test\", \"name\": \"test\", \"lastname\": \"test\", \"dateOfBirth\": \"2000-05-09\"}")
                         .header("Content-Type", "application/json"))
@@ -48,7 +46,7 @@ class CustomerControllerTest {
                 .andReturn();
 
         String token = login.getResponse().getHeader("Authorization");
-//        when
+//        given
         MvcResult mvcResult = mockMvc.perform(get("/api/customer")
                 .header("Authorization", token))
                 .andDo(print())
