@@ -59,6 +59,7 @@ export class AccountService {
   }
 
   logout() {
+    console.log("Token expired!");  
     localStorage.removeItem('user');
     this.userSubject.next(null);
     this.router.navigate(['/login']);

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,15 +6,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @Output() onLogout: EventEmitter<any> = new EventEmitter();
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  onTokenExpired() {
-    this.onLogout.emit();
-  }
-
 }
