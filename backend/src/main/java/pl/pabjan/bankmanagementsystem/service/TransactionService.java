@@ -3,6 +3,7 @@ package pl.pabjan.bankmanagementsystem.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.pabjan.bankmanagementsystem.exceptions.TransactionException;
 import pl.pabjan.bankmanagementsystem.mapper.TransactionMapper;
 import pl.pabjan.bankmanagementsystem.model.Customer;
 import pl.pabjan.bankmanagementsystem.model.Transaction;
@@ -32,7 +33,7 @@ public class TransactionService {
     }
 
 //    creates transaction
-    public void createTransaction(TransactionRequest transactionRequest) {
+    public void createTransaction(TransactionRequest transactionRequest) throws TransactionException {
         Customer customer = customerService.getCurrentCustomer();
         Customer recipient = customerService.findByAccountNumber(transactionRequest.getRecipientAccountNumber());
         transferFunds(customer, recipient, transactionRequest.getAmount());
@@ -41,10 +42,18 @@ public class TransactionService {
     }
 
 //    transfers money from sender to recipient
-    private void transferFunds(Customer customer, Customer recipient, BigDecimal amount) {
+    private void transferFunds(Customer customer, Customer recipient, BigDecimal amount) throws TransactionException {
+        if (!isAmountGreaterThanZero(amount)) {
+            throw new TransactionException("Amount must be greater than 0!");
+        }
         customer.setBalance(customer.getBalance().subtract(amount));
         recipient.setBalance(recipient.getBalance().add(amount));
         customerService.editCustomerBalance(customer);
         customerService.editCustomerBalance(recipient);
+
+    }
+
+    private boolean isAmountGreaterThanZero(BigDecimal amount) {
+        return amount.compareTo(BigDecimal.ZERO) > 0;
     }
 }

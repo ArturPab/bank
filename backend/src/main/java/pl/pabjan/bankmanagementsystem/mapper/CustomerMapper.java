@@ -5,6 +5,7 @@ import pl.pabjan.bankmanagementsystem.model.dto.CustomerRequest;
 import pl.pabjan.bankmanagementsystem.model.dto.CustomerResponse;
 import pl.pabjan.bankmanagementsystem.model.Customer;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
 @Component
@@ -31,6 +32,7 @@ public class CustomerMapper {
         customer.setPassword(customerRequest.getPassword());
         customer.setDateOfBirth(customerRequest.getDateOfBirth());
         customer.setBankAccountNumber(generateAccountNumber());
+        customer.setBalance(BigDecimal.ZERO);
         customer.setEnabled(false);
         customer.setCreated(Instant.now());
         customer.setRole("USER");
