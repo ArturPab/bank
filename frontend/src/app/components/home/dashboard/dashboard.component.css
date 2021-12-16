@@ -1,0 +1,44 @@
+.info-wrapper {
+    background-color: #EEEEEEBB;
+    border: 1px solid #55555555;
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.2);
+}
+
+.info-wrapper h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    letter-spacing: .1rem;
+}
+
+.account-number-wrapper {
+    margin-bottom: 3rem;
+}
+
+.account-number, .account-balance-title {
+    font-size: 1rem;
+    letter-spacing: .05rem;
+}
+
+.account-balance {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+button {
+    border-radius: 1rem;
+}
+
+.fullname {
+    letter-spacing: .07rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.created-date {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.3rem;
+}

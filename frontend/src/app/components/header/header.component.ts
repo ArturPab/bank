@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Output() onLogout: EventEmitter<any> = new EventEmitter();
+  links?: Object;
 
   constructor(private router: Router) {
    }

@@ -11,9 +11,11 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/account/register/register.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import { TransactionComponent } from './components/home/transaction/transaction.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, HeaderComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, HeaderComponent, RegisterComponent, DashboardComponent, TransactionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
