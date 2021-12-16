@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 
@@ -35,6 +36,9 @@ public class Customer extends AbstractModel {
     @Size(min = 26, max = 26)
     @Column(name = "bank_account_number", unique = true)
     private String bankAccountNumber;
+
+    @Column(name = "balance")
+    private BigDecimal balance;
 
     @Column(name = "created")
     private Instant created;
