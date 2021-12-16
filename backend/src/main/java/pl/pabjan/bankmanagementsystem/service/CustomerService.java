@@ -63,4 +63,13 @@ public class CustomerService {
         Customer currentCustomer = getCurrentCustomer();
         return customerMapper.mapToDto(currentCustomer);
     }
+
+    public Customer findByAccountNumber(String recipientAccountNumber) {
+        return customerRepo.findByBankAccountNumber(recipientAccountNumber).orElseThrow(() -> new BankCustomerException("Recipient not found"));
+    }
+
+    @Transactional
+    public void editCustomerBalance(Customer customer) {
+        customerRepo.save(customer);
+    }
 }
