@@ -25,6 +25,11 @@ public class TransactionController {
         return status(HttpStatus.OK).body(transactionService.findByCurrentCustomer());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TransactionResponse> findById(@PathVariable Long id) throws TransactionException {
+        return status(HttpStatus.OK).body(transactionService.findById(id));
+    }
+
     @PostMapping
     public ResponseEntity<Void> createTransaction(@RequestBody TransactionRequest transactionRequest) throws TransactionException {
         transactionService.createTransaction(transactionRequest);

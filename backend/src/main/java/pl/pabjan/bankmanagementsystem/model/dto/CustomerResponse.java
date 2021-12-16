@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 
@@ -22,6 +23,8 @@ public class CustomerResponse {
     private LocalDate dateOfBirth;
 
     private String bankAccountNumber;
+
+    private BigDecimal balance;
 
     private Instant created;
 

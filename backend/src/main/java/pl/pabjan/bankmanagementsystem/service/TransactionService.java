@@ -2,14 +2,12 @@ package pl.pabjan.bankmanagementsystem.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.pabjan.bankmanagementsystem.exceptions.TransactionException;
 import pl.pabjan.bankmanagementsystem.mapper.TransactionMapper;
 import pl.pabjan.bankmanagementsystem.model.Customer;
 import pl.pabjan.bankmanagementsystem.model.Transaction;
 import pl.pabjan.bankmanagementsystem.model.dto.TransactionRequest;
 import pl.pabjan.bankmanagementsystem.model.dto.TransactionResponse;
-import pl.pabjan.bankmanagementsystem.repo.CustomerRepo;
 import pl.pabjan.bankmanagementsystem.repo.TransactionRepo;
 
 import java.math.BigDecimal;
@@ -55,5 +53,10 @@ public class TransactionService {
 
     private boolean isAmountGreaterThanZero(BigDecimal amount) {
         return amount.compareTo(BigDecimal.ZERO) > 0;
+    }
+
+    public TransactionResponse findById(Long id) throws TransactionException {
+        Customer customer = customerService.getCurrentCustomer();
+        return transactionMapper.mapToDto(transactionRepo.findById(id).orElseThrow(() -> new TransactionException("Transaction not found")), customer);
     }
 }

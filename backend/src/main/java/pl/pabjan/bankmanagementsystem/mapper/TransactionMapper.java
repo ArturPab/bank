@@ -7,6 +7,7 @@ import pl.pabjan.bankmanagementsystem.model.dto.TransactionRequest;
 import pl.pabjan.bankmanagementsystem.model.dto.TransactionResponse;
 
 import java.time.Instant;
+import java.util.Optional;
 
 @Component
 public class TransactionMapper {

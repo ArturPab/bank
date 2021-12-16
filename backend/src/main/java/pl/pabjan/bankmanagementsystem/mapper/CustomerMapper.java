@@ -19,6 +19,7 @@ public class CustomerMapper {
                 customer.getLastname(),
                 customer.getDateOfBirth(),
                 customer.getBankAccountNumber(),
+                customer.getBalance(),
                 customer.getCreated(),
                 customer.isEnabled()
         );
