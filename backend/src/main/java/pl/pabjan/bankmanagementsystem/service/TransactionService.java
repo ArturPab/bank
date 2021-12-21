@@ -51,11 +51,18 @@ public class TransactionService {
         if (!isAmountGreaterThanZero(amount)) {
             throw new TransactionException("Amount must be greater than 0!");
         }
+        if (isAmountGreaterThanBalance(customer.getBalance(), amount)) {
+            throw new TransactionException("Amount must be lower than balance");
+        }
         customer.setBalance(customer.getBalance().subtract(amount));
         recipient.setBalance(recipient.getBalance().add(amount));
         customerService.editCustomerBalance(customer);
         customerService.editCustomerBalance(recipient);
 
+    }
+
+    private boolean isAmountGreaterThanBalance(BigDecimal balance, BigDecimal amount) {
+        return balance.compareTo(amount) < 0;
     }
 
     private boolean isAmountGreaterThanZero(BigDecimal amount) {
