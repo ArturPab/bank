@@ -4,7 +4,7 @@ export class Customer {
     lastname!: string;
     dateOfBirth!: string;
     bankAccountNumber!: string;
-    balance!: any;
+    balance!: number;
     created!: string;
     enabled!: boolean;
 }
