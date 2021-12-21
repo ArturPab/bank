@@ -1,7 +1,7 @@
 --liquibase formatted sql
 --changeset apabjan:10
 
-create table TRANSACTION (
+create table transaction (
                           id bigint not null auto_increment,
                           title varchar(100) NOT NULL,
                           recipient varchar(90) NOT NULL,

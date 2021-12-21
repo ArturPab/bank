@@ -1,4 +1,4 @@
 --liquibase formatted sql
 --changeset apabjan:4
 
-UPDATE CUSTOMER set enabled=1
+UPDATE customer set enabled=1
