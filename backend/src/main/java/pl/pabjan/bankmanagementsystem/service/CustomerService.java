@@ -13,6 +13,7 @@ import pl.pabjan.bankmanagementsystem.model.Customer;
 import pl.pabjan.bankmanagementsystem.repo.CustomerRepo;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,5 +72,9 @@ public class CustomerService {
     @Transactional
     public void editCustomerBalance(Customer customer) {
         customerRepo.save(customer);
+    }
+
+    public List<Customer> findAllById(Set<Long> customerIds) {
+        return customerRepo.findAllById(customerIds);
     }
 }

@@ -12,7 +12,9 @@ import pl.pabjan.bankmanagementsystem.repo.TransactionRepo;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -25,9 +27,14 @@ public class TransactionService {
 //    finds transactions by current customer
     public List<TransactionResponse> findByCurrentCustomer() {
         Customer customer = customerService.getCurrentCustomer();
-        List<Transaction> transactions = transactionRepo.findByCustomerId(customer.getId());
+        List<Transaction> transactionsAsSender = transactionRepo.findByCustomerId(customer.getId());
+        List<Transaction> transactionsAsRecipient = transactionRepo.findByRecipientAccountNumber(customer.getBankAccountNumber());
+        Set<Long> customerIds = transactionsAsRecipient.stream().map(Transaction::getCustomerId).collect(Collectors.toSet());
+        List<Customer> senders = customerService.findAllById(customerIds);
+        List<TransactionResponse> transactionAsSenderResponse = transactionsAsSender.stream().map(transaction -> transactionMapper.mapToDto(transaction, customer)).collect(Collectors.toList());
+        List<TransactionResponse> transactionAsRecipientResponse = transactionsAsRecipient.stream().map(transaction -> transactionMapper.mapToDto(transaction, senders)).collect(Collectors.toList());
 
-        return transactions.stream().map(transaction -> transactionMapper.mapToDto(transaction, customer)).collect(Collectors.toList());
+        return Stream.concat(transactionAsRecipientResponse.stream(), transactionAsSenderResponse.stream()).collect(Collectors.toList());
     }
 
 //    creates transaction
