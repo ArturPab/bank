@@ -13,9 +13,11 @@ import { RegisterComponent } from './components/account/register/register.compon
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { TransactionComponent } from './components/home/transaction/transaction.component';
+import { HistoryComponent } from './components/home/history/history.component';
+import {CdkAccordionModule } from '@angular/cdk/accordion'
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, HeaderComponent, RegisterComponent, DashboardComponent, TransactionComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, HeaderComponent, RegisterComponent, DashboardComponent, TransactionComponent, HistoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,7 +25,8 @@ import { TransactionComponent } from './components/home/transaction/transaction.
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    CdkAccordionModule
   ],
   providers: [{
     provide:ErrorStateMatcher,useClass: ShowOnDirtyErrorStateMatcher

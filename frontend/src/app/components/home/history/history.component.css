@@ -1,0 +1,25 @@
+.accordion-item, .accordion, .accordion-item-header {
+    border: none;
+}
+
+li {
+    border: none;
+    border-bottom: 1px solid #55555544;
+}
+
+.positive {
+    color: green;
+}
+
+.details {
+    padding-top: 1rem;
+}
+
+.details li {
+    padding-bottom: 2rem;
+}
+
+.heading-info {
+    font-size: .7rem;
+    color: #555;
+}

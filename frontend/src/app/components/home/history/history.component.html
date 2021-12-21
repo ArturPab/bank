@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="col-12 history-heading-wrapper">
+      <h2 class="history-heading">Transaction history</h2>
+    </div>
+    <ul class="list-group list-group-flush">
+      <cdk-accordion class="accordion">
+        <li class="list-group-item d-flex font-weight-bold">
+          <div class="col-6 col-md-2 transaction-info p-0">DATE</div>
+          <div class="col-9 transaction-info p-0 d-none d-md-block">TITLE</div>
+          <div class="col-6 col-md-1 transaction-info p-0 d-flex justify-content-end justify-content-md-start">AMOUNT</div>
+        </li>
+        <li class="list-group-item" *ngFor="let transaction of transactions">
+          <cdk-accordion-item
+            #accordionItem="cdkAccordionItem"
+            class="accordion-item"
+            role="button"
+            tabindex="0"
+            [attr.id]="'accordion-header-' + transaction.id"
+            [attr.aria-expanded]="accordionItem.expanded"
+            [attr.aria-controls]="'accordion-body-' + transaction.id"
+          >
+            <div
+              class="accordion-item-header d-flex"
+              (click)="accordionItem.toggle()"
+            >
+              <div class="col-6 col-md-2 transaction-info p-0">
+                {{ transaction.date | date }}
+              </div>
+              <div class="col-9 transaction-info p-0 d-none d-md-block">
+                {{ transaction.title }}
+              </div>
+              <div
+                class="col-6 col-md-1 transaction-info p-0 "
+                [ngClass]="{ positive: transaction.amount > 0 }"
+              >
+                {{ transaction.amount }}$
+              </div>
+            </div>
+            <div
+              class="accordion-item-body"
+              role="region"
+              [style.display]="accordionItem.expanded ? '' : 'none'"
+              [attr.id]="'accordion-body-' + transaction.id"
+              [attr.aria-labelledby]="'accordion-header-' + transaction.id"
+            >
+              <ul class="list-group list-group-flush details" >
+                <li class="list-group-item row d-flex justify-content-start">
+                  <div class="col-6 d-flex flex-column">
+                    <span class="heading-info"> Sender's name </span>
+                    <span>
+                      {{ transaction.senderName }}
+                    </span>
+                  </div>
+                  <div class="col-6 d-flex flex-column">
+                    <span class="heading-info"> Recipient's name </span>
+                    <span>
+                      {{ transaction.recipient }}
+                    </span>
+                  </div>
+                </li>
+                <li class="list-group-item row d-flex justify-content-start">
+                    <div class="col-12 col-lg-6 d-flex flex-column">
+                      <span class="heading-info"> From </span>
+                      <span>
+                        {{ transaction.senderBankNumber }}
+                      </span>
+                    </div>
+                    <div class="col-12 col-lg-6 d-flex flex-column">
+                      <span class="heading-info"> To </span>
+                      <span>
+                        {{ transaction.recipientAccountNumber }}
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex">
+                    <div class="col-12 col-lg-6 d-flex flex-column">
+                      <span class="heading-info"> Title </span>
+                      <span>
+                        {{ transaction.title }}
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex">
+                    <div class="col-12 col-lg-6 d-flex flex-column">
+                      <span class="heading-info"> Amount </span>
+                      <span>
+                        {{ transaction.amount }}$
+                      </span>
+                    </div>
+                  </li>
+                  <li class="list-group-item row d-flex justify-content-start">
+                    <div class="col-12 col-lg-6 d-flex flex-column">
+                      <span class="heading-info"> Date </span>
+                      <span>
+                        {{ transaction.date | date }}
+                      </span>
+                    </div>
+                    <div class="col-12 col-lg-6 d-flex flex-column">
+                        <span class="heading-info"> Operation's number </span>
+                        <span>
+                          {{ transaction.id }}
+                        </span>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+          </cdk-accordion-item>
+        </li>
+      </cdk-accordion>
+    </ul>
+  </div>
+</div>
