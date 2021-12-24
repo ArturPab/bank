@@ -12,17 +12,17 @@ import java.time.Instant;
 public class CustomerMapper {
 
     public CustomerResponse mapToDto(Customer customer) {
+        CustomerResponse customerResponse = new CustomerResponse();
+        customerResponse.setBalance(customer.getBalance());
+        customerResponse.setCreated(customer.getCreated());
+        customerResponse.setEmail(customer.getEmail());
+        customerResponse.setEnabled(customer.isEnabled());
+        customerResponse.setLastname(customer.getLastname());
+        customerResponse.setName(customer.getName());
+        customerResponse.setBankAccountNumber(customer.getBankAccountNumber());
+        customerResponse.setDateOfBirth(customer.getDateOfBirth());
 
-        return new CustomerResponse(
-                customer.getEmail(),
-                customer.getName(),
-                customer.getLastname(),
-                customer.getDateOfBirth(),
-                customer.getBankAccountNumber(),
-                customer.getBalance(),
-                customer.getCreated(),
-                customer.isEnabled()
-        );
+        return customerResponse;
     }
 
     public Customer map(CustomerRequest customerRequest) {
