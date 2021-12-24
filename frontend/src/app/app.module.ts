@@ -18,7 +18,6 @@ import { DashboardComponent } from './components/home/dashboard/dashboard.compon
 import { TransactionComponent } from './components/home/transaction/transaction.component';
 import { HistoryComponent } from './components/home/history/history.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
       provide: ErrorStateMatcher,
       useClass: ShowOnDirtyErrorStateMatcher,
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
 })
