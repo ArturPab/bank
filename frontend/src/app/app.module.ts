@@ -4,20 +4,33 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './components/account/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RegisterComponent } from './components/account/register/register.component';
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import {
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher,
+} from '@angular/material/core';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 import { TransactionComponent } from './components/home/transaction/transaction.component';
 import { HistoryComponent } from './components/home/history/history.component';
-import {CdkAccordionModule } from '@angular/cdk/accordion'
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, HeaderComponent, RegisterComponent, DashboardComponent, TransactionComponent, HistoryComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    HeaderComponent,
+    RegisterComponent,
+    DashboardComponent,
+    TransactionComponent,
+    HistoryComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,11 +39,15 @@ import {CdkAccordionModule } from '@angular/cdk/accordion'
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    CdkAccordionModule
+    CdkAccordionModule,
   ],
-  providers: [{
-    provide:ErrorStateMatcher,useClass: ShowOnDirtyErrorStateMatcher
-  }],
+  providers: [
+    {
+      provide: ErrorStateMatcher,
+      useClass: ShowOnDirtyErrorStateMatcher,
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
