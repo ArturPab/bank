@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
       .subscribe({
         next: (customer) => {
           this.customer = customer;
+          
           this.customer.bankAccountNumber = this.getFormattedBankAccountNumber(
             this.customer.bankAccountNumber
           );
@@ -40,7 +41,7 @@ export class DashboardComponent implements OnInit {
     return balance.toFixed(2);
   }
 
-  getFormattedBankAccountNumber(bankAccountNumber: string) {
+  getFormattedBankAccountNumber(bankAccountNumber: string) {   
     let bankNumber = '';
     for (let i = 0; i < bankAccountNumber.length; i++) {
       bankNumber += bankAccountNumber[i];
