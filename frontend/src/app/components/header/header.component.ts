@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isCollapsed: boolean = true;
   @Output() onLogout: EventEmitter<any> = new EventEmitter();
   links?: Object;
 

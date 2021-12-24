@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost:5000',
+  apiUrl: 'the-a-bank-backend.herokuapp.com',
   production: true
 };
